@@ -28,6 +28,8 @@
 | 2026-11-23 | `27014f2` | `docs: GIT_LOG for full-stack demo` | `docs/progress/GIT_LOG.md` | push exit 0 |
 | 2026-11-23 | `00a5a85` | `docs: drop P2 with reason; SUBMISSION pack` | `docs/SUBMISSION.md`, checklist | push exit 0 |
 
+| 2026-11-23 | `11d5b2f` | `audit: proxy route + error UI, burn-in guard, E2E/security/perf docs` | `docs/testing/*5`, proxy route, burn-in guard+test, e2e prompt test | pytest 66, vitest 12, e2e 2/2; push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty
