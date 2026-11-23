@@ -22,10 +22,8 @@ pytest -q  # expect: no tests collected (until 1.1 lands)
 ## 4. Next Task Pointer (only 6.4 remains — needs human)
 - Record the 8-min video from `docs/SUBMISSION.md` shot list; submit the form.
 - Keep `docker compose up` running for the demo URLs during review.
-
-## 4. Next Task Pointer
-- `MASTER_CHECKLIST.md`: Phase 5.4 vitest + Playwright runs (`npm install` then `vitest run` in `frontend/`), compose `up` smoke, contract parity CI; then Phase 6.3 demo + 6.4 video.
-- Frontend source (`Timeline`, `TranscriptView`, `PromptBar`, `EditorPage`) is written but not yet executed — run before claiming done.
+- Latest audit: `docs/testing/FULL_SYSTEM_AUDIT.md` + matrix + E2E/security/perf (66+12+2 green; burn-in BLOCKED by brew build).
+- Stale Phase 1.x pointers below are superseded (all phases done except 6.4).
 
 ## 5. Context to Reload
 - `AGENTS.md` §§1–6 (five non-negotiables, contracts-first, frame math, FFmpeg, STT, LLM).
