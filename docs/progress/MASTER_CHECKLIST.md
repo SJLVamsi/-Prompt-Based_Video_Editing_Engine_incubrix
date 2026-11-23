@@ -19,15 +19,15 @@
 - [x] 1.6 `engine/history.py` + `test_history.py`
 - [x] 1.7 Fixture `words_10s.json` + `test_golden_8step.py` steps 1–5 + `test_graph_build.py`
 
-## Phase 2 — Transcript + sessions
-- [ ] 2.1 `cues.py` + SRT/VTT goldens + corruption tests
-- [ ] 2.2 `session_runner.py` + 3-way `MockLLM` matrix
-- [ ] 2.3 Word-gap silence shortener + `silencedetect` preview
+## Phase 2 — Transcript + sessions [~] in-progress (2.1–2.3 done 2026-11-23, 34 tests green)
+- [x] 2.1 `cues.py` + SRT/VTT goldens + corruption tests
+- [x] 2.2 `session_runner.py` + 3-way `MockLLM` matrix
+- [x] 2.3 Word-gap silence shortener + `silencedetect` preview
 - [ ] 2.4 `transcribe_svc.py` (turbo+VAD) + nightly STT matrix (slow)
 - [ ] 2.5 `diarize.py` (optional) + vote/relabel
 
-## Phase 3 — Renderer
-- [ ] 3.1 `render/graph.py` + `test_graph_build.py` (no binary)
+## Phase 3 — Renderer [~] graph builder done (test_graph_build green)
+- [x] 3.1 `render/graph.py` + `test_graph_build.py` (no binary)
 - [ ] 3.2 `render/{ffmpeg,presets,captions}.py` + synthetic render test (slow)
 - [ ] 3.3 23.976 + VFR evidence (drift + A/V offset logs)
 
