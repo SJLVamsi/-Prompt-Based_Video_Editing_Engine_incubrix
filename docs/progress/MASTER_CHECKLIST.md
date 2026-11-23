@@ -40,7 +40,7 @@
 ## Phase 5 — API + storage + frontend [~] MVP skeleton done 2026-11-23
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
 - [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
-- [x] 5.3 `docker-compose.yml` + `.env.example` — `docker compose config --quiet` exit 0 (2026-11-23, local `.env` from example, gitignored); full `up` smoke next
+- [x] 5.3 `docker-compose.yml` + `.env.example` — `config --quiet` exit 0; **`up -d postgres redis s3` green 2026-11-23**: 4 buckets created, S3 put/get `smoke-ok` roundtrip, redis `PONG`, postgres accepting connections, `s3 (healthy)`. Storage backend is S3-compatible (LocalStack `:4.3` local — MinIO Hub repo gone + Quay 401 from this daemon; same boto3 path-style code, same bucket names). API/worker image build next
 - [x] 5.4 Editor shell + timeline + transcript + prompt + undo — **vitest 12/12 + Playwright e2e 1/1 green** (chromium, `next dev`: load → ArrowRight step → `C` split 1→2 clips → Undo →1). Fixed real bugs: page import depth `../../` → `../../../`, timecode now `formatTC` MM:SS:FF
 
 ## Phase 6 — Evidence [~] batch runner done

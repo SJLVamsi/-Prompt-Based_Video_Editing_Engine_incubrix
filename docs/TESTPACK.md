@@ -27,6 +27,13 @@
 - `test_vfr_phone_normalizes_to_cfr`: `-fps_mode vfr` source → graph `fps+aresample` → 6.0s ±0.15 render.
 - Compat note: FFmpeg ≥7 deprecates `-vsync`; FFmpeg 9 removes it. Cmd builder + VFR fixture now use `-fps_mode cfr/vfr`.
 
+## Compose infra smoke — 2026-11-23 GREEN (Docker Desktop 4.79.0)
+- `docker compose up -d postgres redis s3` → all `Up`, `s3 (healthy)`.
+- `infra/s3/init-buckets.py` → created `raw-uploads/renders/thumbs/transcripts`.
+- S3 put/get `renders/smoke.txt` → `b'smoke-ok'` roundtrip.
+- `redis-cli ping` → `PONG`; `pg_isready -U pg` → accepting connections.
+- Storage decision: MinIO image uninstallable here (Hub repo gone, Quay 401) → LocalStack 4.3 S3 for local smoke; prod keeps any S3-compatible endpoint via `S3_ENDPOINT`.
+
 ## Logs
-- `pytest -q`: 40 passed in 0.08s (see commit message).
-- `scripts/run_sessions.py` (PYTHONPATH=.): wrote 16 sessions, status split above.
+- `pytest -q`: backend 64 passed; `npx vitest run`: 12 passed; `npx playwright test`: 1 passed.
+- `scripts/run_sessions.py` (PYTHONPATH=.): wrote 16 sessions (7 done / 7 clarify / 2 reject).

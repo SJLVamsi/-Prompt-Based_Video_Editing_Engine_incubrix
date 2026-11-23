@@ -16,5 +16,6 @@
 
 ## New (2026-11-23 build)
 - RESOLVED 2026-11-23: `ffmpeg` installed via brew (9.0.2). Slow lane green. Note: FFmpeg 9 removed `-vsync`; codebase now uses `-fps_mode cfr/vfr`.
-- [!] Docker daemon not responding (`Cannot connect to the Docker daemon`, socket stale since Sep 30). `open -a Docker` starts backend processes but API never comes up — likely needs user to open Docker Desktop and complete first-run setup. **Manual step for user.** `compose config --quiet` = exit 0, but `compose up` smoke is blocked until daemon runs.
+- [!] Docker daemon was down; user started Docker Desktop 4.79.0 (RESOLVED 2026-11-23 — daemon responding, pulls work).
+- [!] MinIO image uninstallable from this daemon (Hub `minio/minio` repo gone; Quay 401) → RESOLVED via LocalStack 4.3 S3 in compose (same boto3 code/buckets); prod may use any `S3_ENDPOINT`.
 - faster-whisper weights not installed (by design, slow lane) — `transcribe.py` raises clean RuntimeError; fixture path covers fast lane.
