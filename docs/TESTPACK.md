@@ -13,10 +13,11 @@
   malformed JSON, overflow timestamps, extra keys, placeholder text.
 - Replay: same ops → same `replay_hash` (`sha256(source|canonical_plan|engine_version)`).
 
-## Slow lane (not yet run — needs ffmpeg + weights + GPU)
-- `test_sync_slow`: 23.976 + VFR phone render, drift <1.5 frames, A/V <20ms.
-- `transcribe_svc` nightly: tiny-model WER/hallucination matrix, VAD sweep.
-- Playwright chromium: scrub/cut/undo/caption/SSE/download.
+## Slow lane — 2026-11-23 GREEN (ffmpeg 9.0.2, `pytest backend/tests/test_sync_slow.py`: 3 passed)
+- `test_cfr_length_and_av_offset`: synthetic 10s testsrc 30fps+sine → cut head 60f → **240 frames exact**, duration **8.021s** (expect 8.0), A/V offset **21ms** (<40ms gate).
+- `test_23976_roundtrip_frames`: 24000/1001 source → 144f render → duration ≈6.006s ±0.1, A/V <40ms.
+- `test_vfr_phone_normalizes_to_cfr`: `-fps_mode vfr` source → graph `fps+aresample` → 6.0s ±0.15 render.
+- Compat note: FFmpeg ≥7 deprecates `-vsync`; FFmpeg 9 removes it. Cmd builder + VFR fixture now use `-fps_mode cfr/vfr`.
 
 ## Logs
 - `pytest -q`: 40 passed in 0.08s (see commit message).

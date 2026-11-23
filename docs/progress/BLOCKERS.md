@@ -15,5 +15,5 @@
 - (none yet)
 
 ## New (2026-11-23 build)
-- `ffmpeg` binary missing in build env (`command not found`) — slow render/sync evidence (Phase 3.2–3.3) blocked until `brew install ffmpeg` or CI image with ffmpeg. Pure graph tests green; exec tests pending.
+- RESOLVED 2026-11-23: `ffmpeg` installed via brew (9.0.2). Slow lane green. Note: FFmpeg 9 removed `-vsync`; codebase now uses `-fps_mode cfr/vfr`.
 - faster-whisper weights not installed (by design, slow lane) — `transcribe.py` raises clean RuntimeError; fixture path covers fast lane.

@@ -23,11 +23,25 @@ def cues_to_ass(cues, fps_num: int, fps_den: int) -> str:
 
 
 def build_ffmpeg_cmd(graph: FilterGraph, preset: str = "720p", fps: str = "30",
-                     extra_vf_tail: str = "") -> list[str]:
+                     extra_vf_tail: str = "", input_path: str = "src.mp4",
+                     output_path: str = "out.mp4") -> list[str]:
     if preset not in PRESETS:
         raise ValueError(f"unknown preset {preset}")
     vf = graph.full + (f",{extra_vf_tail}" if extra_vf_tail else "")
-    return (["ffmpeg", "-y", "-fflags", "+genpts", "-i", "src.mp4",
+    return (["ffmpeg", "-y", "-fflags", "+genpts", "-i", input_path,
              "-filter_complex", vf, "-map", "[vout]", "-map", "[aout]",
-             "-r", fps, "-vsync", "cfr"]
-            + PRESETS[preset] + AUDIO + MUX + ["out.mp4"])
+             "-r", fps, "-fps_mode", "cfr"]
+            + PRESETS[preset] + AUDIO + MUX + [output_path])
+
+
+def run_cmd(cmd: list[str], timeout: int = 180) -> tuple[int, str]:
+    """Run ffmpeg; return (returncode, combined stderr+stdout tail). No exception on failure."""
+    import subprocess
+    p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+    tail = (p.stderr or "")[-4000:]
+    return p.returncode, tail
+
+
+def timeline_captions_to_ass(timeline) -> str:
+    """Timeline captions are already output-frame aligned; reuse cues_to_ass."""
+    return cues_to_ass(list(timeline.captions), timeline.fps_num, timeline.fps_den)

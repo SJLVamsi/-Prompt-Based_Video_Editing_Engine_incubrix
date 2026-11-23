@@ -24,8 +24,9 @@ def build_graph(tl: Timeline, fps_num: int | None = None, fps_den: int | None = 
     v_labels: list[str] = []
     a_labels: list[str] = []
     for i, clip in enumerate(tl.clips):
-        v_in = f"[0:v]" if i == 0 and len(tl.clips) == 1 else f"[vsrc{i}]"
-        # split handling emitted by caller; here assume per-clip trim from single input via split upstream
+        # One input file: FFmpeg lets multiple trim chains read from the same
+        # [0:v]/[0:a] pad, so no explicit split is needed.
+        v_in = "[0:v]"
         v = (
             f"{v_in}trim=start_frame={clip.start_frame}:end_frame={clip.end_frame},"
             f"setpts=PTS-STARTPTS"

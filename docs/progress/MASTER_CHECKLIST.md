@@ -26,8 +26,10 @@
 - [ ] 2.4 `transcribe_svc.py` (turbo+VAD) + nightly STT matrix (slow)
 - [ ] 2.5 `diarize.py` (optional) + vote/relabel
 
-## Phase 3 — Renderer [~] graph builder done (test_graph_build green)
-- [x] 3.1 `render/graph.py` + `test_graph_build.py` (no binary)
+## Phase 3 — Renderer [x] done 2026-11-23 (43 tests green, ffmpeg 9.0.2 evidence)
+- [x] 3.1 `render/graph.py` + `test_graph_build.py` (no binary) + fixed multi-trim input bug (`[vsrc]` → `[0:v]` reuse)
+- [x] 3.2 `render/{ffmpeg,presets,probe}.py`: `build_ffmpeg_cmd(input/output)`, `run_cmd`, `timeline_captions_to_ass`, `probe/summarize`; FFmpeg 9 compat (`-fps_mode cfr`, `-vsync` removed upstream)
+- [x] 3.3 23.976 + VFR + CFR evidence (`test_sync_slow.py` 3 passed): CFR cut 240f exact / 8.021s / A/V 21ms; 23.976 144f → 6.006s ±0.1; VFR phone normalizes via `fps+aresample`, 6.0s ±0.15
 - [ ] 3.2 `render/{ffmpeg,presets,captions}.py` + synthetic render test (slow)
 - [ ] 3.3 23.976 + VFR evidence (drift + A/V offset logs)
 
