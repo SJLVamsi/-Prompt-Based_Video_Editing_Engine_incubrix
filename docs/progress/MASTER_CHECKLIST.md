@@ -23,8 +23,8 @@
 - [x] 2.1 `cues.py` + SRT/VTT goldens + corruption tests
 - [x] 2.2 `session_runner.py` + 3-way `MockLLM` matrix
 - [x] 2.3 Word-gap silence shortener + `silencedetect` preview
-- [ ] 2.4 `transcribe_svc.py` (turbo+VAD) + nightly STT matrix (slow)
-- [ ] 2.5 `diarize.py` (optional) + vote/relabel
+- [x] 2.4 `transcribe_svc.py` (turbo+VAD) + nightly STT matrix (slow) — 2026-11-23: `test_transcribe_slow.py` 2 passed (tiny model): 3s silence+VAD → ≤2 words (no hallucination leak); `say` speech → ≥1 word. Compat: `av==16.1.0` pinned (av 19 removed `metadata_errors` kwarg faster-whisper 1.2.1 passes)
+- [x] 2.5 `diarize.py` (optional) + vote/relabel — `reconcile_cues` majority-vote + REVIEW flag + graceful missing-dep error; pyannote run stays slow-lane (needs HF_TOKEN)
 
 ## Phase 3 — Renderer [x] done 2026-11-23 (43 tests green, ffmpeg 9.0.2 evidence)
 - [x] 3.1 `render/graph.py` + `test_graph_build.py` (no binary) + fixed multi-trim input bug (`[vsrc]` → `[0:v]` reuse)
@@ -37,13 +37,13 @@
 - [x] 4.1 `llm_adapters.py` (Mock/Groq/Gemini) + `session.py` fault injection (real adapters need keys, slow/manual)
 - [x] 4.2 `search.py` keyword fallback + RRF-ready test (embedding index sqlite-vec/Chroma next)
 - [x] 4.3 `shorts.py` knapsack + 9:16 crop + hook scorer + test
-- [ ] 4.4 Conversational 4-turn hash-stable test
+- [x] 4.4 Conversational 4-turn hash-stable test — `test_conversational.py`: refine(cut)→undo→redo→hook(keep)→restore(v1) identical hash, restore undoable
 
 ## Phase 5 — API + storage + frontend [~] MVP skeleton done 2026-11-23
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
 - [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
-- [x] 5.3 `docker-compose.yml` + `.env.example` (smoke test next, needs docker)
-- [ ] 5.4 Editor shell + timeline + transcript + prompt + jobs (scaffold `Timeline.tsx/contracts/undo-stack`; vitest + Playwright next)
+- [x] 5.3 `docker-compose.yml` + `.env.example` — `docker compose config --quiet` exit 0 (2026-11-23, local `.env` from example, gitignored); full `up` smoke next
+- [~] 5.4 Editor shell + timeline + transcript + prompt + jobs — source done: real `Timeline` (tracks/playhead/scrub/keyboard/frame-snap), `TranscriptView` (bidirectional highlight/autoscroll), `PromptBar`, `EditorPage` (undo stack wiring); vitest + Playwright runs next
 
 ## Phase 6 — Evidence [~] batch runner done
 - [x] 6.1 `scripts/run_sessions.py` → 16 `results.json` (7 done / 7 clarify / 2 reject, incl. failures)

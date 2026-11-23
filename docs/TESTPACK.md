@@ -13,7 +13,12 @@
   malformed JSON, overflow timestamps, extra keys, placeholder text.
 - Replay: same ops → same `replay_hash` (`sha256(source|canonical_plan|engine_version)`).
 
-## Slow lane — 2026-11-23 GREEN (ffmpeg 9.0.2, `pytest backend/tests/test_sync_slow.py`: 3 passed)
+## Slow lane — 2026-11-23 GREEN (ffmpeg 9.0.2)
+- Render (`pytest backend/tests/test_sync_slow.py`: 3 passed).
+- STT (`pytest backend/tests/test_transcribe_slow.py`: 2 passed, tiny model): 3s `anullsrc` silence + VAD → ≤2 words (hallucination suppressed); macOS `say` "hello demo captions today" → ≥1 word transcribed. Env fix: `av==16.1.0` pinned in `requirements.txt` (av 19 drops `metadata_errors` kwarg faster-whisper 1.2.1 passes to `av.open`; av 14.x has no py3.13 wheel).
+- Conversational (`test_conversational.py`): refine→undo→redo→hook→restore hash-stable, restore undoable.
+- Diarize (`test_diarize.py`): majority-vote + REVIEW flag; clean RuntimeError when pyannote missing.
+- Fast lane total: 49 passed.
 - `test_cfr_length_and_av_offset`: synthetic 10s testsrc 30fps+sine → cut head 60f → **240 frames exact**, duration **8.021s** (expect 8.0), A/V offset **21ms** (<40ms gate).
 - `test_23976_roundtrip_frames`: 24000/1001 source → 144f render → duration ≈6.006s ±0.1, A/V <40ms.
 - `test_vfr_phone_normalizes_to_cfr`: `-fps_mode vfr` source → graph `fps+aresample` → 6.0s ±0.15 render.
