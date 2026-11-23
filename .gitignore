@@ -1,0 +1,50 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*HF_TOKEN*
+*GROQ_API_KEY*
+*GOOGLE_API_KEY*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Next
+node_modules/
+.next/
+out/
+dist/
+*.local
+
+# Media / weights (fixtures >5MB need explicit exception)
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.mp3
+*.pt
+*.bin
+*.onnx
+*.ckpt
+!tests/fixtures/.gitkeep
+!docs/**/*.md
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Docker / data
+minio-data/
+pg-data/
+redis-data/
+render-tmp/
+models/
+sessions/
