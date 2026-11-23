@@ -20,6 +20,8 @@
 
 | 2026-11-23 | `e750580` | `test: Playwright editor e2e 1/1 green; fix import depth + formatTC` | `frontend/e2e`, `playwright.config`, editor page, timeline TC | `npx playwright test` 1 passed (chromium); push exit 0 |
 
+| 2026-11-23 | `312bfbd` | `feat: compose infra smoke green (S3 roundtrip, PONG, pg ready)` | `docker-compose.yml`, `infra/s3/init-buckets.py`, progress + TESTPACK | buckets created; S3 `smoke-ok`; redis PONG; pg ready; push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty
