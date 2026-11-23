@@ -10,6 +10,10 @@
 | 2026-11-23 | `4055340` | `docs: lock Phase 1 approval, STT local+Groq fallback, demo Compose+tunnel` | `docs/progress/{BLOCKERS,CURRENT_STATUS}.md` | push exit 0, clean |
 | 2026-11-23 | `7d0e424` | `docs: update GIT_LOG with 79cba30 and 4055340` | `docs/progress/GIT_LOG.md` | push exit 0, clean |
 | 2026-11-23 | `3c8bb8c` | `docs: preserve original master prompt verbatim in MASTER_GOAL.md §9` | `docs/MASTER_GOAL.md`, `docs/progress/CURRENT_STATUS.md` | push exit 0, clean |
+| 2026-11-23 | `aac6837` | `docs: update GIT_LOG with 7d0e424 and 3c8bb8c` | `docs/progress/GIT_LOG.md` | push exit 0, clean |
+| 2026-11-23 | `0e3d416` | `feat: Phase 1 timeline core (24 tests green)` | `backend/engine/*`, `backend/tests/*`, `pytest.ini` | `pytest -q` 24 passed; push exit 0 |
+| 2026-11-23 | `5988453` | `feat: Phase 2.1-2.3 cues/sessions/silence (34 tests green)` | `cues/session/silence` + tests | `pytest -q` 34 passed; push exit 0 |
+| 2026-11-23 | `7b6524c` | `feat: API MVP + adapters + search/shorts + 16 sessions + compose + frontend (40 tests green)` | `backend/app`, adapters, contracts, compose, `scripts/run_sessions.py`, frontend scaffold, `TESTPACK.md` | `pytest -q` 40 passed; `run_sessions.py` 16 runs 7/7/2; push exit 0 |
 
 ## How to Verify a Row
 ```bash
