@@ -50,4 +50,4 @@
 - [ ] 6.4 Submission Form + 8-min video
 
 ## P2 Likely-Drop
-- [-] Not yet dropped — F18/F19/F20 stay `todo` until P0+P1 verified, then drop explicitly with reason.
+- [-] DROPPED 2026-11-23 with reason — F18 OpenTimelineIO export, F19 60-min latency target, F20 40-scenario CI gate. Per brief they score 10/100 marks only if *every* item in the level is verified; P0+P1 + evidence take priority and the level cannot be fully verified in scope. Revisit only after 6.4 ships.
