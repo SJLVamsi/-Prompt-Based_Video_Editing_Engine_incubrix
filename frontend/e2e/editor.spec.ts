@@ -17,3 +17,12 @@ test("editor scrub / cut / undo", async ({ page }) => {
   await page.getByRole("button", { name: "Undo" }).click();
   await expect(page.locator(".clip")).toHaveCount(1);
 });
+
+/** Prompt path: invalid input surfaces a clean error (no silent swallow). */
+test("prompt invalid input shows error", async ({ page }) => {
+  await page.goto("/projects/demo");
+  // needs the API reachable via the proxy route (localhost:8000 in dev/CI)
+  await page.getByLabel(/edit prompt/i).fill("not json at all");
+  await page.getByRole("button", { name: /apply prompt/i }).click();
+  await expect(page.getByRole("status")).toContainText(/error/i);
+});

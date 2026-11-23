@@ -15,6 +15,7 @@ export default function EditorPage({ params }: { params: { projectId: string } }
   const [words] = useState<WordToken[]>([]);
   const [currentTime, setCurrentTime] = useState(0);
   const [busy, setBusy] = useState(false);
+  const [planMsg, setPlanMsg] = useState<string | null>(null);
   const [stack] = useState(() => new UndoStack());
   const duration = clips.length ? Math.max(...clips.map((c) => c.end)) / FPS : 0;
 
@@ -33,12 +34,23 @@ export default function EditorPage({ params }: { params: { projectId: string } }
 
   async function applyPrompt(prompt: string) {
     setBusy(true);
+    setPlanMsg(null);
     try {
-      const res = await fetch("/api/proxy/v1/plans:generate", {
+      const res = await fetch("/api/proxy/plans:generate", {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ raw: prompt }),
       });
-      void res;
+      const data = await res.json();
+      if (!res.ok) {
+        setPlanMsg(`Error ${data.code || res.status}: ${data.detail || "request failed"}`);
+      } else if (data.plan) {
+        const ops = data.plan.ops ?? [];
+        setPlanMsg(`Plan: ${ops.length} op(s) (${data.plan.response || "results"})`);
+      } else {
+        setPlanMsg("Unexpected response from planner.");
+      }
+    } catch (e) {
+      setPlanMsg(`Error: could not reach planner (${e instanceof Error ? e.message : e})`);
     } finally {
       setBusy(false);
     }
@@ -57,6 +69,7 @@ export default function EditorPage({ params }: { params: { projectId: string } }
         <button onClick={() => stack.redo()}>Redo</button>
       </div>
       <PromptBar onSubmit={applyPrompt} busy={busy} />
+      {planMsg && <p role="status">{planMsg}</p>}
       <TranscriptView words={words} currentTime={currentTime} onSeek={setCurrentTime} />
     </main>
   );

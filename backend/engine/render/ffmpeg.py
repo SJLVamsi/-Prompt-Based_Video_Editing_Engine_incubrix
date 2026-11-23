@@ -45,3 +45,32 @@ def run_cmd(cmd: list[str], timeout: int = 180) -> tuple[int, str]:
 def timeline_captions_to_ass(timeline) -> str:
     """Timeline captions are already output-frame aligned; reuse cues_to_ass."""
     return cues_to_ass(list(timeline.captions), timeline.fps_num, timeline.fps_den)
+
+
+def ffmpeg_has_filter(name: str) -> bool:
+    """Check `ffmpeg -filters` output. No exception; False when binary missing."""
+    import subprocess
+    try:
+        p = subprocess.run(["ffmpeg", "-hide_banner", "-filters"],
+                           capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.TimeoutExpired):
+        return False
+    for line in p.stdout.splitlines():
+        parts = line.split()
+        if len(parts) >= 2 and parts[1] == name:
+            return True
+    return False
+
+
+def require_text_burnin() -> None:
+    """Raise a clear, actionable error when the ffmpeg build cannot burn text.
+
+    Verified 2026-11-23: Homebrew FFmpeg 9.0.2 ships neither libass
+    (`subtitles`/`ass`) nor libfreetype (`drawtext`). Caption delivery must
+    use SRT/VTT sidecars or `mov_text` soft-sub mux until the binary changes.
+    """
+    if not ffmpeg_has_filter("subtitles"):
+        raise RuntimeError(
+            "burn-in unavailable: this ffmpeg build has no libass (`subtitles` filter). "
+            "Use cues_to_srt/cues_to_vtt sidecars or mov_text soft-sub mux instead."
+        )
