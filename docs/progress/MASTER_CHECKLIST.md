@@ -37,17 +37,16 @@
 - [x] 4.3 `shorts.py` knapsack + 9:16 crop + hook scorer + test
 - [x] 4.4 Conversational 4-turn hash-stable test — `test_conversational.py`: refine(cut)→undo→redo→hook(keep)→restore(v1) identical hash, restore undoable
 
-## Phase 5 — API + storage + frontend [~] MVP skeleton done 2026-11-23
-- [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
-- [x] 5.2 Routers MVP — **live-verified vs container 2026-11-23**: `healthz ok`, `manifest` presets, `plans:generate` validates (fixed real bug: container layout imports `engine.*` vs repo `backend.engine.*` → layout-agnostic import), `renders` idempotent replay (same jobId + `replayed:true`), `jobs` get, `/version`. `test_api.py` 3 passed locally
-- [x] 5.3 `docker-compose.yml` (S3-compatible store) + `.env.example` — infra smoke green; `api` image builds + boots; `worker`/`frontend` Dockerfiles created, image builds in flight
-- [x] 5.3 `docker-compose.yml` + `.env.example` — `config --quiet` exit 0; **`up -d postgres redis s3` green 2026-11-23**: 4 buckets created, S3 put/get `smoke-ok` roundtrip, redis `PONG`, postgres accepting connections, `s3 (healthy)`. Storage backend is S3-compatible (LocalStack `:4.3` local — MinIO Hub repo gone + Quay 401 from this daemon; same boto3 path-style code, same bucket names). API/worker image build next
-- [x] 5.4 Editor shell + timeline + transcript + prompt + undo — **vitest 12/12 + Playwright e2e 1/1 green** (chromium, `next dev`: load → ArrowRight step → `C` split 1→2 clips → Undo →1). Fixed real bugs: page import depth `../../` → `../../../`, timecode now `formatTC` MM:SS:FF
+## Phase 5 — API + storage + frontend [x] done 2026-11-23 (full compose green)
+- [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` + `test_contract_parity.py` (backend accepts frontend fixtures, rejects dissolve/bad-speed)
+- [x] 5.2 Routers MVP — **live-verified vs container**: `healthz ok`, `manifest` presets, `plans:generate` validates (fixed `engine.*` vs `backend.engine.*` import layout bug), `renders` idempotent replay, `jobs` get, `/version`
+- [x] 5.3 Full `docker compose up` green — 6/6 `Up` (api, worker, frontend, postgres, redis, s3 healthy); MinIO uninstallable here (Hub repo gone, Quay 401) → LocalStack 4.3 S3, same boto3 code/buckets; buckets created, S3 `smoke-ok` roundtrip, redis `PONG`, pg ready; fixed missing `start` script (`next start`)
+- [x] 5.4 Editor shell — **vitest 12/12 + Playwright e2e 1/1 green vs dev AND prod container** (`next start` image): load → ArrowRight step → `C` split 1→2 clips → Undo →1. Fixed real bugs: page import depth `../../` → `../../../`, timecode `formatTC` MM:SS:FF
 
-## Phase 6 — Evidence [~] batch runner done
+## Phase 6 — Evidence [~] demo running locally
 - [x] 6.1 `scripts/run_sessions.py` → 16 `results.json` (7 done / 7 clarify / 2 reject, incl. failures)
-- [x] 6.2 Test pack (`docs/TESTPACK.md`) fast lane 40 green; slow lane pending ffmpeg/weights
-- [ ] 6.3 Live demo URL (Compose + public URL; Docker available next)
+- [x] 6.2 Test pack (`docs/TESTPACK.md`): backend 64 + vitest 12 + e2e 1/1 (dev + prod container) + compose smoke
+- [x] 6.3 Live demo: full `docker compose up` on localhost — editor http://localhost:3000/projects/demo, api http://localhost:8000/healthz (6/6 Up; public tunnel optional)
 - [ ] 6.4 Submission Form + 8-min video
 
 ## P2 Likely-Drop
