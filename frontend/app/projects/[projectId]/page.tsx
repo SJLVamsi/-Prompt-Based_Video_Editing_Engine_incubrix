@@ -1,10 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Timeline } from "../../components/timeline/Timeline";
-import { TranscriptView, type WordToken } from "../../components/transcript/TranscriptView";
-import { PromptBar } from "../../components/prompt/PromptBar";
-import { UndoStack } from "../../lib/undo-stack";
-import type { TimelineClip } from "../../lib/contracts";
+import { Timeline } from "../../../components/timeline/Timeline";
+import { TranscriptView, type WordToken } from "../../../components/transcript/TranscriptView";
+import { PromptBar } from "../../../components/prompt/PromptBar";
+import { UndoStack } from "../../../lib/undo-stack";
+import { formatTC } from "../../../lib/time";
+import type { TimelineClip } from "../../../lib/contracts";
 
 const FPS = 30;
 

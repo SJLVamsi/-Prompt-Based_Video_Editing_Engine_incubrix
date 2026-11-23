@@ -30,8 +30,6 @@
 - [x] 3.1 `render/graph.py` + `test_graph_build.py` (no binary) + fixed multi-trim input bug (`[vsrc]` → `[0:v]` reuse)
 - [x] 3.2 `render/{ffmpeg,presets,probe}.py`: `build_ffmpeg_cmd(input/output)`, `run_cmd`, `timeline_captions_to_ass`, `probe/summarize`; FFmpeg 9 compat (`-fps_mode cfr`, `-vsync` removed upstream)
 - [x] 3.3 23.976 + VFR + CFR evidence (`test_sync_slow.py` 3 passed): CFR cut 240f exact / 8.021s / A/V 21ms; 23.976 144f → 6.006s ±0.1; VFR phone normalizes via `fps+aresample`, 6.0s ±0.15
-- [ ] 3.2 `render/{ffmpeg,presets,captions}.py` + synthetic render test (slow)
-- [ ] 3.3 23.976 + VFR evidence (drift + A/V offset logs)
 
 ## Phase 4 — LLM + search + Shorts [~] pure parts done 2026-11-23
 - [x] 4.1 `llm_adapters.py` (Mock/Groq/Gemini) + `session.py` fault injection (real adapters need keys, slow/manual)
@@ -43,7 +41,7 @@
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
 - [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
 - [x] 5.3 `docker-compose.yml` + `.env.example` — `docker compose config --quiet` exit 0 (2026-11-23, local `.env` from example, gitignored); full `up` smoke next
-- [~] 5.4 Editor shell + timeline + transcript + prompt + jobs — source done + **vitest 12/12 green**; Playwright `editor.spec.ts` (scrub/cut/undo) written, browsers installing (chromium `npx playwright install` in background)
+- [x] 5.4 Editor shell + timeline + transcript + prompt + undo — **vitest 12/12 + Playwright e2e 1/1 green** (chromium, `next dev`: load → ArrowRight step → `C` split 1→2 clips → Undo →1). Fixed real bugs: page import depth `../../` → `../../../`, timecode now `formatTC` MM:SS:FF
 
 ## Phase 6 — Evidence [~] batch runner done
 - [x] 6.1 `scripts/run_sessions.py` → 16 `results.json` (7 done / 7 clarify / 2 reject, incl. failures)

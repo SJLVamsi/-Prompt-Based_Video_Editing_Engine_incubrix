@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { secToFrame } from "../../lib/time";
+import { formatTC, secToFrame } from "../../lib/time";
 import type { TimelineClip } from "../../lib/contracts";
 
 type Props = {
@@ -70,7 +70,7 @@ export function Timeline({ clips, fps, duration, currentTime, pxPerSec, onSeek, 
         />
       </div>
       <div className="tc">
-        {secToFrame(currentTime, fps)}f / {secToFrame(duration, fps)}f @ {fps}fps
+        {formatTC(Math.round(currentTime * fps), fps)} / {formatTC(secToFrame(duration, fps), fps)} @ {fps}fps
       </div>
     </div>
   );
