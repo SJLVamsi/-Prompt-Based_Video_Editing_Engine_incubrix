@@ -59,7 +59,10 @@ def create_app() -> FastAPI:
 
     @app.post("/v1/plans:generate")
     def plan_generate(body: dict):
-        from backend.engine.session import parse_plan
+        try:  # container layout (/code -> engine.*)
+            from engine.session import parse_plan
+        except ImportError:  # repo layout (root -> backend.engine.*)
+            from backend.engine.session import parse_plan
         try:
             plan = parse_plan(body.get("raw", "{}"))
             return {"plan": plan, "warnings": []}

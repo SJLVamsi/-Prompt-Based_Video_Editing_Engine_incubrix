@@ -39,7 +39,8 @@
 
 ## Phase 5 — API + storage + frontend [~] MVP skeleton done 2026-11-23
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
-- [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
+- [x] 5.2 Routers MVP — **live-verified vs container 2026-11-23**: `healthz ok`, `manifest` presets, `plans:generate` validates (fixed real bug: container layout imports `engine.*` vs repo `backend.engine.*` → layout-agnostic import), `renders` idempotent replay (same jobId + `replayed:true`), `jobs` get, `/version`. `test_api.py` 3 passed locally
+- [x] 5.3 `docker-compose.yml` (S3-compatible store) + `.env.example` — infra smoke green; `api` image builds + boots; `worker`/`frontend` Dockerfiles created, image builds in flight
 - [x] 5.3 `docker-compose.yml` + `.env.example` — `config --quiet` exit 0; **`up -d postgres redis s3` green 2026-11-23**: 4 buckets created, S3 put/get `smoke-ok` roundtrip, redis `PONG`, postgres accepting connections, `s3 (healthy)`. Storage backend is S3-compatible (LocalStack `:4.3` local — MinIO Hub repo gone + Quay 401 from this daemon; same boto3 path-style code, same bucket names). API/worker image build next
 - [x] 5.4 Editor shell + timeline + transcript + prompt + undo — **vitest 12/12 + Playwright e2e 1/1 green** (chromium, `next dev`: load → ArrowRight step → `C` split 1→2 clips → Undo →1). Fixed real bugs: page import depth `../../` → `../../../`, timecode now `formatTC` MM:SS:FF
 

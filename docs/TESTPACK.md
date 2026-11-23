@@ -27,7 +27,10 @@
 - `test_vfr_phone_normalizes_to_cfr`: `-fps_mode vfr` source → graph `fps+aresample` → 6.0s ±0.15 render.
 - Compat note: FFmpeg ≥7 deprecates `-vsync`; FFmpeg 9 removes it. Cmd builder + VFR fixture now use `-fps_mode cfr/vfr`.
 
-## Compose infra smoke — 2026-11-23 GREEN (Docker Desktop 4.79.0)
+## Compose + live API — 2026-11-23 GREEN (infra + api container)
+- `docker compose build api` → `Built`, exit 0; `up -d api` → `{"ok":true}`, manifest presets OK.
+- Live: `plans:generate` → validated plan 200 (fixed `ModuleNotFoundError: No module named 'backend'` — container mounts `./backend` as `/code`, so imports are `engine.*`; fix tries `engine.*` then falls back to `backend.engine.*`, `test_api.py` still 3 passed).
+- Live: `renders` ×2 same `Idempotency-Key` → same `jobId f84a15d3`, second `replayed:true`; `GET /v1/jobs` → `queued`; `/version` → `0.2.0`.
 - `docker compose up -d postgres redis s3` → all `Up`, `s3 (healthy)`.
 - `infra/s3/init-buckets.py` → created `raw-uploads/renders/thumbs/transcripts`.
 - S3 put/get `renders/smoke.txt` → `b'smoke-ok'` roundtrip.
