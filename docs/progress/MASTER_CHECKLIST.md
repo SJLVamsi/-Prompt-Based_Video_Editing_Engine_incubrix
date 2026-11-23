@@ -10,14 +10,14 @@
 - [x] Write progress files (`MASTER_CHECKLIST`, `CURRENT_STATUS`, `SESSION_HANDOFF`, `BLOCKERS`, `GIT_LOG`) + `.gitignore` + `README` skeleton — 2026-11-23
 - [x] Commit + push planning docs, record hash in `GIT_LOG.md` — `61963ec` pushed 2026-11-23, `git status` clean, `main...origin/main` in sync
 
-## Phase 1 — Timeline core (no video, no AI)
-- [ ] 1.1 `engine/schema.py` + `test_schema_frozen.py`
-- [ ] 1.2 `engine/timebase.py` + `test_timebase.py`
-- [ ] 1.3 `engine/hash.py + store.py` + `test_hash.py`
-- [ ] 1.4 `engine/words.py` + `test_words.py`
-- [ ] 1.5 `engine/ops/* + validate.py` + `test_ops_*` + fuzz
-- [ ] 1.6 `engine/history.py` + `test_history.py`
-- [ ] 1.7 Fixture `words_10s.json` + `test_golden_8step.py` steps 1–5
+## Phase 1 — Timeline core (no video, no AI) [x] done 2026-11-23 (24 tests green)
+- [x] 1.1 `engine/schema.py` + `test_schema_frozen.py`
+- [x] 1.2 `engine/timebase.py` + `test_timebase.py`
+- [x] 1.3 `engine/hash.py + store.py` + `test_hash.py`
+- [x] 1.4 `engine/words.py` + `test_words.py`
+- [x] 1.5 `engine/ops/* + validate.py` + `test_ops_*` + fuzz
+- [x] 1.6 `engine/history.py` + `test_history.py`
+- [x] 1.7 Fixture `words_10s.json` + `test_golden_8step.py` steps 1–5 + `test_graph_build.py`
 
 ## Phase 2 — Transcript + sessions
 - [ ] 2.1 `cues.py` + SRT/VTT goldens + corruption tests
