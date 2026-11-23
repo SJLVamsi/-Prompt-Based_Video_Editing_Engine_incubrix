@@ -16,7 +16,7 @@
 | 2026-11-23 | `7b6524c` | `feat: API MVP + adapters + search/shorts + 16 sessions + compose + frontend (40 tests green)` | `backend/app`, adapters, contracts, compose, `scripts/run_sessions.py`, frontend scaffold, `TESTPACK.md` | `pytest -q` 40 passed; `run_sessions.py` 16 runs 7/7/2; push exit 0 |
 | 2026-11-23 | `03943df` | `feat: Phase 3 render evidence — ffmpeg exec/probe, fps_mode fix, 23.976/VFR slow tests green (43 passed)` | `render/{graph,ffmpeg,probe}`, `test_sync_slow.py`, progress + TESTPACK | `pytest -q` 43 passed; CFR 240f/8.021s/A/V 21ms; push exit 0 |
 | 2026-11-23 | `2faca7a` | `feat: STT slow lane, conversational, diarize, editor shell, compose config (49 tests)` | `diarize.py`, `test_{conversational,diarize,transcribe_slow}`, `requirements` av pin, frontend editor files | `pytest -q` 49 passed; STT 2 slow green; `compose config --quiet` exit 0; push exit 0 |
-| 2026-11-23 | `vitest-12` | `test: frontend vitest 12/12 green (time, undo-stack, contracts)` | `frontend/lib/__tests__/*`, `vitest.config.ts`, `package.json` TS 5.4.5 fix | `npx vitest run` 12 passed; backend `pytest -q` 54 passed |
+| 2026-11-23 | `e05aa6f` | `test: frontend vitest 12/12 green (time, undo-stack, contracts)` | `frontend/lib/__tests__/*`, `vitest.config.ts`, `package.json` TS 5.4.5 fix | `npx vitest run` 12 passed; backend `pytest -q` 54 passed |
 
 ## How to Verify a Row
 ```bash
