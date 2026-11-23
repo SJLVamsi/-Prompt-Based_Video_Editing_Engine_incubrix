@@ -20,8 +20,8 @@ pytest -q  # expect: no tests collected (until 1.1 lands)
 ```
 
 ## 4. Next Task Pointer
-- `MASTER_CHECKLIST.md`: Phase 1.1 `engine/schema.py` + `test_schema_frozen.py`.
-- Follow `ROADMAP.md` Phase 1 order; TDD (red→green), update `CURRENT_STATUS` + `MASTER_CHECKLIST` + `GIT_LOG` in same commit, push.
+- `MASTER_CHECKLIST.md`: Phase 5.4 vitest + Playwright runs (`npm install` then `vitest run` in `frontend/`), compose `up` smoke, contract parity CI; then Phase 6.3 demo + 6.4 video.
+- Frontend source (`Timeline`, `TranscriptView`, `PromptBar`, `EditorPage`) is written but not yet executed — run before claiming done.
 
 ## 5. Context to Reload
 - `AGENTS.md` §§1–6 (five non-negotiables, contracts-first, frame math, FFmpeg, STT, LLM).
