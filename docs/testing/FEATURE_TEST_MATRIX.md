@@ -38,9 +38,12 @@ Legend: **PASS** = executed green. **PARTIAL** = partly verified, gaps noted.
 |---|---|---|
 | `GET /healthz /readyz /manifest /version` | PASS | `curl` 200 live |
 | `POST /v1/plans:generate` | PASS | valid 200 + invalid 422 `E_VALIDATION` live |
-| `POST /v1/renders` + `Idempotency-Key` | PASS | same jobId replay live |
+| `POST /v1/renders` + `Idempotency-Key` | PASS |
+| `POST /v1/uploads` (ext/size/probe) | PASS | UAT: real mp4 accepted, `.txt` → 415 | same jobId replay live |
 | `GET/POST /v1/jobs/{id}[/cancel]` + SSE | PASS (cancel/smoke) | live get; cancel covered by unit only |
 | Upload / transcribe / projects / download routers | MISSING | never implemented; MVP serves fixture+synthetic inputs |
+
+| `POST /v1/transcribe` + `uat/run` + download | PASS | UAT: 9 words, cut-silence:2, 3 cues, 1080x1920, mov_text, 5.675 s |
 
 ## Dropped (explicit, with reason)
 OTIO export, 60-min latency target, 40-scenario CI gate — brief scores only on full-level verification; out of scope.

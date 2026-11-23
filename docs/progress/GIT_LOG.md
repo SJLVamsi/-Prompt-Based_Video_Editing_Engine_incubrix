@@ -30,6 +30,8 @@
 
 | 2026-11-23 | `11d5b2f` | `audit: proxy route + error UI, burn-in guard, E2E/security/perf docs` | `docs/testing/*5`, proxy route, burn-in guard+test, e2e prompt test | pytest 66, vitest 12, e2e 2/2; push exit 0 |
 
+| 2026-11-23 | `f6d1bfb` | `feat: UAT slice passes genuinely (upload/transcribe/render/download)` | `app/main.py UAT endpoints, graph vf_video_tail, Dockerfiles+multipart, proxy binary, /uat page, e2e` | pytest 71, e2e 3/3, ffprobe 1080x1920+mov_text+5.675s; push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty
