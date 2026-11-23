@@ -9,7 +9,7 @@
 | 2026-11-23 | P1 | Vendor limits are snapshots (Groq/Gemini/Render/HF change frequently) | Quota/math may be stale at build time | Re-check `console.groq.com/docs/rate-limits`, `aistudio.google.com/docs/pricing` + rate-limit page, `render.com/docs/free`, `huggingface.co/docs/hub/spaces-overview` at Phase 4/6 start; record date + account numbers here | Open |
 | 2026-11-23 | P1 | HF gated weights need per-account acceptance + token (`pyannote/segmentation-3.0` + `speaker-diarization-3.1`) | CI/reviewers cannot pull without tokened account | Keep diarization optional; container reads `HF_TOKEN` env; never ask reviewers to supply; offline cache after first pull | Open (by design) |
 | 2026-11-23 | P2 | Free-tier LLM trains on content (Gemini free = Yes) | Confidential brief/test videos must not go to free tier | `MockLLM` default; real adapters slow/manual + `--allow-free-tier` gate + redaction | Open (by design) |
-| 2026-11-23 | P2 | HF Spaces single container/port; Compose will not run there | Demo hosting choice constrained | Default demo = `docker compose` + public URL; Render free only with external MinIO + cold-start warning | Open — decide in Phase 6.3 |
+| 2026-11-23 | P2 | HF Spaces single container/port; Compose will not run there | Demo hosting choice constrained | DECIDED 2026-11-23: demo = Docker Compose local + tunnel (user choice). Render free only as backup with external MinIO + cold-start warning | Decided — implement in Phase 6.3 |
 
 ## Resolved
 - (none yet)

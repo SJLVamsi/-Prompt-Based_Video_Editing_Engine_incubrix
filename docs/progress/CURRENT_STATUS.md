@@ -15,7 +15,8 @@
 - Wrote: `AGENTS.md`, `docs/MASTER_GOAL.md`, `docs/ARCHITECTURE.md`, `docs/RESEARCH_PLAN.md`, `docs/FEATURES.md`, `docs/ROADMAP.md`, `docs/progress/MASTER_CHECKLIST.md` (this file pending commit).
 
 ## In Progress
-- Finishing progress files + `.gitignore` + `README`, then commit/push planning docs.
+- Phase 0 DONE (planning pushed `79cba30`). User approved Phase 1 start (2026-11-23) — begins next session per setup-step boundary (no major code in setup step).
+- Decisions locked 2026-11-23: STT = local faster-whisper primary + Groq fallback; demo = Docker Compose local + tunnel.
 
 ## Next (Phase 1, in order)
 1. `engine/schema.py` + frozen test.
