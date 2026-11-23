@@ -39,7 +39,7 @@
 
 ## Phase 5 — API + storage + frontend [x] done 2026-11-23 (full compose green)
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` + `test_contract_parity.py` (backend accepts frontend fixtures, rejects dissolve/bad-speed)
-- [x] 5.2 Routers MVP — **live-verified vs container**: `healthz ok`, `manifest` presets, `plans:generate` validates (fixed `engine.*` vs `backend.engine.*` import layout bug), `renders` idempotent replay, `jobs` get, `/version`
+- [x] 5.2 Routers MVP + UAT slice — **live-verified vs container**: `healthz ok`, `manifest` presets, `plans:generate` validates, `renders` idempotent replay, `jobs` get, `/version`; **new** `uploads` (ext/size/probe validation), `transcribe` (tiny+VAD), `uat/run` (silence+subs+9:16 rule intents), `exports/{job}/download` (FileResponse). Fixed: multipart dep, ffprobe in image, vf-tail audio-chain bug, proxy JSON crash
 - [x] 5.3 Full `docker compose up` green — 6/6 `Up` (api, worker, frontend, postgres, redis, s3 healthy); MinIO uninstallable here (Hub repo gone, Quay 401) → LocalStack 4.3 S3, same boto3 code/buckets; buckets created, S3 `smoke-ok` roundtrip, redis `PONG`, pg ready; fixed missing `start` script (`next start`)
 - [x] 5.4 Editor shell — **vitest 12/12 + Playwright e2e 1/1 green vs dev AND prod container** (`next start` image): load → ArrowRight step → `C` split 1→2 clips → Undo →1. Fixed real bugs: page import depth `../../` → `../../../`, timecode `formatTC` MM:SS:FF
 

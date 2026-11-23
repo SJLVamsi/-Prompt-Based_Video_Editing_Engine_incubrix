@@ -2,6 +2,7 @@ fastapi==0.115.*
 uvicorn==0.30.*
 pydantic==2.*
 httpx==0.28.*
+python-multipart==0.0.20
 pytest==9.*
 # STT slow lane (pinned: av 19 removed `metadata_errors` kwarg faster-whisper 1.2.1 uses)
 faster-whisper==1.2.1

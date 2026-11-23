@@ -15,7 +15,10 @@ class FilterGraph:
     full: str
 
 
-def build_graph(tl: Timeline, fps_num: int | None = None, fps_den: int | None = None) -> FilterGraph:
+def build_graph(tl: Timeline, fps_num: int | None = None, fps_den: int | None = None,
+                vf_video_tail: str = "") -> FilterGraph:
+    """vf_video_tail (e.g. 9:16 crop+scale) is spliced into the video chain
+    just before [vout], so audio is untouched. Default "" = unchanged graph."""
     fps_num = fps_num or tl.fps_num
     fps_den = fps_den or tl.fps_den
     fps_str = f"{fps_num}/{fps_den}" if fps_den != 1 else f"{fps_num}"
@@ -58,10 +61,12 @@ def build_graph(tl: Timeline, fps_num: int | None = None, fps_den: int | None = 
         a_parts.append(a)
         a_labels.append(f"[a{i}]")
     n = len(tl.clips)
+    tail = ("," + vf_video_tail) if vf_video_tail else ""
     if n == 1:
-        v_concat, a_concat = "[v0]format=yuv420p[vout]", "[a0]aformat=sample_fmts=fltp:channel_layouts=stereo[aout]"
+        v_concat = f"[v0]format=yuv420p{tail}[vout]"
+        a_concat = "[a0]aformat=sample_fmts=fltp:channel_layouts=stereo[aout]"
     else:
-        v_concat = "".join(v_labels) + f"concat=n={n}:v=1:a=0,format=yuv420p[vout]"
+        v_concat = "".join(v_labels) + f"concat=n={n}:v=1:a=0,format=yuv420p{tail}[vout]"
         a_concat = "".join(a_labels) + f"concat=n={n}:v=0:a=1,aresample=osr=48000:async=1[aout]"
     # subtitles tail if captions
     if tl.captions:
