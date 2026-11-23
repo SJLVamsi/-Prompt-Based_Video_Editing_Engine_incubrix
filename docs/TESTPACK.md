@@ -19,6 +19,7 @@
 - Conversational (`test_conversational.py`): refine→undo→redo→hook→restore hash-stable, restore undoable.
 - Diarize (`test_diarize.py`): majority-vote + REVIEW flag; clean RuntimeError when pyannote missing.
 - Fast lane total: 49 passed.
+- Frontend (`npx vitest run` in `frontend/`, 2026-11-23): **12/12 green** — `time` (round-trip, snap, TC, 23976), `undo-stack` (round-trip, empty, clear-future, cap-100), `contracts` (valid cut, reject dissolve/bad speed/empty caption; mirrors backend parity cases). Env fix: `typescript@5.4.0` does not exist → pinned `5.4.5`.
 - `test_cfr_length_and_av_offset`: synthetic 10s testsrc 30fps+sine → cut head 60f → **240 frames exact**, duration **8.021s** (expect 8.0), A/V offset **21ms** (<40ms gate).
 - `test_23976_roundtrip_frames`: 24000/1001 source → 144f render → duration ≈6.006s ±0.1, A/V <40ms.
 - `test_vfr_phone_normalizes_to_cfr`: `-fps_mode vfr` source → graph `fps+aresample` → 6.0s ±0.15 render.

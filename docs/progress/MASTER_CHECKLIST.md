@@ -43,7 +43,7 @@
 - [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
 - [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
 - [x] 5.3 `docker-compose.yml` + `.env.example` — `docker compose config --quiet` exit 0 (2026-11-23, local `.env` from example, gitignored); full `up` smoke next
-- [~] 5.4 Editor shell + timeline + transcript + prompt + jobs — source done: real `Timeline` (tracks/playhead/scrub/keyboard/frame-snap), `TranscriptView` (bidirectional highlight/autoscroll), `PromptBar`, `EditorPage` (undo stack wiring); vitest + Playwright runs next
+- [~] 5.4 Editor shell + timeline + transcript + prompt + jobs — source done + **vitest 12/12 green** (`time`, `undo-stack` cap-100/clear-future, `contracts` mirror of backend cases); Playwright editor flow next (needs `npx playwright install` browsers)
 
 ## Phase 6 — Evidence [~] batch runner done
 - [x] 6.1 `scripts/run_sessions.py` → 16 `results.json` (7 done / 7 clarify / 2 reject, incl. failures)
