@@ -33,7 +33,7 @@
 
 ## Phase 4 — LLM + search + Shorts [~] pure parts done 2026-11-23
 - [x] 4.1 `llm_adapters.py` (Mock/Groq/Gemini) + `session.py` fault injection (real adapters need keys, slow/manual)
-- [x] 4.2 `search.py` keyword fallback + RRF-ready test + `scene.py` shot detection (mean-abs-diff, pure + real red→blue cut at f60±2, embedding index sqlite-vec/Chroma next)
+- [x] 4.2 `search.py` keyword fallback + `index.py` vector store + RRF fusion + `scene.py` shot detection (mean-abs-diff, pure + real red→blue cut at f60±2, BGE/CLIP encoder swap next)
 - [x] 4.3 `shorts.py` knapsack + 9:16 crop + hook scorer + test
 - [x] 4.4 Conversational 4-turn hash-stable test — `test_conversational.py`: refine(cut)→undo→redo→hook(keep)→restore(v1) identical hash, restore undoable
 
