@@ -18,6 +18,8 @@
 | 2026-11-23 | `2faca7a` | `feat: STT slow lane, conversational, diarize, editor shell, compose config (49 tests)` | `diarize.py`, `test_{conversational,diarize,transcribe_slow}`, `requirements` av pin, frontend editor files | `pytest -q` 49 passed; STT 2 slow green; `compose config --quiet` exit 0; push exit 0 |
 | 2026-11-23 | `e05aa6f` | `test: frontend vitest 12/12 green (time, undo-stack, contracts)` | `frontend/lib/__tests__/*`, `vitest.config.ts`, `package.json` TS 5.4.5 fix | `npx vitest run` 12 passed; backend `pytest -q` 54 passed |
 
+| 2026-11-23 | `e750580` | `test: Playwright editor e2e 1/1 green; fix import depth + formatTC` | `frontend/e2e`, `playwright.config`, editor page, timeline TC | `npx playwright test` 1 passed (chromium); push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty

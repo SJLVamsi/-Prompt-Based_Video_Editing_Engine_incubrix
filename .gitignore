@@ -18,6 +18,8 @@ venv/
 # Node / Next
 node_modules/
 .next/
+frontend/test-results/
+frontend/.next/
 out/
 dist/
 *.local
