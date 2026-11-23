@@ -24,6 +24,10 @@
 
 | 2026-11-23 | `00eab66` | `feat: full compose 6/6 Up, e2e vs prod container, demo live` | `frontend/package.json`, checklist, TESTPACK, status | e2e 1/1 vs prod; 6/6 Up; push exit 0 |
 
+| 2026-11-23 | `00eab66` | `feat: full compose 6/6 Up, e2e vs prod container, demo live` | `frontend/package.json`, checklist, TESTPACK, status | e2e 1/1 vs prod; 6/6 Up; push exit 0 |
+| 2026-11-23 | `27014f2` | `docs: GIT_LOG for full-stack demo` | `docs/progress/GIT_LOG.md` | push exit 0 |
+| 2026-11-23 | `00a5a85` | `docs: drop P2 with reason; SUBMISSION pack` | `docs/SUBMISSION.md`, checklist | push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty
