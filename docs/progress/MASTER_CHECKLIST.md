@@ -7,8 +7,8 @@
 - [x] Inspect local + remote (both empty; parent Ship60 docs unrelated) — 2026-11-23
 - [x] Launch 5 research subagents — 2026-11-23
 - [x] Write `AGENTS.md`, `MASTER_GOAL.md`, `ARCHITECTURE.md`, `RESEARCH_PLAN.md`, `FEATURES.md`, `ROADMAP.md` — 2026-11-23
-- [ ] Write progress files (`MASTER_CHECKLIST`, `CURRENT_STATUS`, `SESSION_HANDOFF`, `BLOCKERS`, `GIT_LOG`) + `.gitignore` + `README` skeleton
-- [ ] Commit + push planning docs, record hash in `GIT_LOG.md`
+- [x] Write progress files (`MASTER_CHECKLIST`, `CURRENT_STATUS`, `SESSION_HANDOFF`, `BLOCKERS`, `GIT_LOG`) + `.gitignore` + `README` skeleton — 2026-11-23
+- [x] Commit + push planning docs, record hash in `GIT_LOG.md` — `61963ec` pushed 2026-11-23, `git status` clean, `main...origin/main` in sync
 
 ## Phase 1 — Timeline core (no video, no AI)
 - [ ] 1.1 `engine/schema.py` + `test_schema_frozen.py`
