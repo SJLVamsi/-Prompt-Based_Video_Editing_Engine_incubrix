@@ -18,7 +18,8 @@
 - STT (`pytest backend/tests/test_transcribe_slow.py`: 2 passed, tiny model): 3s `anullsrc` silence + VAD → ≤2 words (hallucination suppressed); macOS `say` "hello demo captions today" → ≥1 word transcribed. Env fix: `av==16.1.0` pinned in `requirements.txt` (av 19 drops `metadata_errors` kwarg faster-whisper 1.2.1 passes to `av.open`; av 14.x has no py3.13 wheel).
 - Conversational (`test_conversational.py`): refine→undo→redo→hook→restore hash-stable, restore undoable.
 - Diarize (`test_diarize.py`): majority-vote + REVIEW flag; clean RuntimeError when pyannote missing.
-- Fast lane total: 49 passed.
+- Scene (`test_scene.py`, cv2 5.1.0, 5 passed): pure numpy abrupt/identical/fade/segments + real 4s red→blue concat → 120 frames, 1 boundary at f60±2.
+- Backend total 2026-11-23: 59 passed (`pytest -q`).
 - Frontend (`npx vitest run` in `frontend/`, 2026-11-23): **12/12 green** — `time` (round-trip, snap, TC, 23976), `undo-stack` (round-trip, empty, clear-future, cap-100), `contracts` (valid cut, reject dissolve/bad speed/empty caption; mirrors backend parity cases). Env fix: `typescript@5.4.0` does not exist → pinned `5.4.5`.
 - `test_cfr_length_and_av_offset`: synthetic 10s testsrc 30fps+sine → cut head 60f → **240 frames exact**, duration **8.021s** (expect 8.0), A/V offset **21ms** (<40ms gate).
 - `test_23976_roundtrip_frames`: 24000/1001 source → 144f render → duration ≈6.006s ±0.1, A/V <40ms.
