@@ -22,6 +22,8 @@
 
 | 2026-11-23 | `312bfbd` | `feat: compose infra smoke green (S3 roundtrip, PONG, pg ready)` | `docker-compose.yml`, `infra/s3/init-buckets.py`, progress + TESTPACK | buckets created; S3 `smoke-ok`; redis PONG; pg ready; push exit 0 |
 
+| 2026-11-23 | `00eab66` | `feat: full compose 6/6 Up, e2e vs prod container, demo live` | `frontend/package.json`, checklist, TESTPACK, status | e2e 1/1 vs prod; 6/6 Up; push exit 0 |
+
 ## How to Verify a Row
 ```bash
 git status --short          # expect empty
