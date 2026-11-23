@@ -13,3 +13,7 @@
 
 ## Resolved
 - (none yet)
+
+## New (2026-11-23 build)
+- `ffmpeg` binary missing in build env (`command not found`) — slow render/sync evidence (Phase 3.2–3.3) blocked until `brew install ffmpeg` or CI image with ffmpeg. Pure graph tests green; exec tests pending.
+- faster-whisper weights not installed (by design, slow lane) — `transcribe.py` raises clean RuntimeError; fixture path covers fast lane.
