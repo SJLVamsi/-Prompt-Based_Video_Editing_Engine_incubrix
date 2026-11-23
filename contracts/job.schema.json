@@ -1,0 +1,1 @@
+{"$schema": "http://json-schema.org/draft-07/schema#", "properties": {"jobId": {"type": "string"}, "progress": {"type": "number"}, "resultUri": {"type": ["string", "null"]}, "state": {"enum": ["queued", "running", "succeeded", "failed", "canceled"]}}, "required": ["jobId", "state"], "title": "Job", "type": "object"}

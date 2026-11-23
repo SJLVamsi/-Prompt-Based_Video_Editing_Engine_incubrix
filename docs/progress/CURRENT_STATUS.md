@@ -1,7 +1,7 @@
 # CURRENT_STATUS — Implementation Progress
 
-**Date (UTC):** 2026-11-23 — Phase 2.1–2.3 DONE (34 pytest green). Next: Phase 2.4 STT service + Phase 4 LLM adapters.
-**Phase:** Engine core + cues/sessions/silence green. Renderer graph (pure) green. Pushed clean.
+**Date (UTC):** 2026-11-23 — 40 pytest green; 16 sessions (7 done/7 clarify/2 reject). Next: transcribe slow lane, conversational test, frontend vitest/Playwright, compose smoke, demo + video.
+**Phase:** Core engine + API MVP + batch evidence pushed. Remaining: slow render/STT, full frontend, demo, submission.
 **Repo:** local `/Users/vamsisatuluri07/Documents/incubrix_placement` + remote `https://github.com/SJLVamsi/-Prompt-Based_Video_Editing_Engine_incubrix.git` (was empty, now initializing).
 
 ## Done

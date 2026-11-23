@@ -31,22 +31,22 @@
 - [ ] 3.2 `render/{ffmpeg,presets,captions}.py` + synthetic render test (slow)
 - [ ] 3.3 23.976 + VFR evidence (drift + A/V offset logs)
 
-## Phase 4 — LLM + search + Shorts
-- [ ] 4.1 `llm_planner.py` (Mock/Groq/Gemini) + fault injection
-- [ ] 4.2 `search.py` dual index + RRF query test
-- [ ] 4.3 `shorts.py` + 3 variants + `hook.json`
+## Phase 4 — LLM + search + Shorts [~] pure parts done 2026-11-23
+- [x] 4.1 `llm_adapters.py` (Mock/Groq/Gemini) + `session.py` fault injection (real adapters need keys, slow/manual)
+- [x] 4.2 `search.py` keyword fallback + RRF-ready test (embedding index sqlite-vec/Chroma next)
+- [x] 4.3 `shorts.py` knapsack + 9:16 crop + hook scorer + test
 - [ ] 4.4 Conversational 4-turn hash-stable test
 
-## Phase 5 — API + storage + frontend
-- [ ] 5.1 `schemas.py` + `contracts/*.schema.json` + `contracts.ts` parity
-- [ ] 5.2 Routers + idempotency + SSE + `healthz/readyz/manifest` + `problem+json`
-- [ ] 5.3 `docker-compose.yml` + MinIO buckets + smoke
-- [ ] 5.4 Editor shell + timeline + transcript + prompt + jobs (vitest + Playwright)
+## Phase 5 — API + storage + frontend [~] MVP skeleton done 2026-11-23
+- [x] 5.1 `schemas.py` (Pydantic) + `contracts/*.schema.json` + `frontend/lib/contracts.ts` (parity CI next)
+- [x] 5.2 Routers MVP: `healthz/readyz/manifest/version`, `plans:generate`, `renders` + idempotency replay, `jobs` + cancel, SSE stub + `test_api.py`
+- [x] 5.3 `docker-compose.yml` + `.env.example` (smoke test next, needs docker)
+- [ ] 5.4 Editor shell + timeline + transcript + prompt + jobs (scaffold `Timeline.tsx/contracts/undo-stack`; vitest + Playwright next)
 
-## Phase 6 — Evidence
-- [ ] 6.1 `scripts/run_sessions.py` → ≥15 `results.json` incl. failures
-- [ ] 6.2 Test pack (`TESTPACK.md`) fast + slow
-- [ ] 6.3 Live demo URL (Compose or Render+external store note)
+## Phase 6 — Evidence [~] batch runner done
+- [x] 6.1 `scripts/run_sessions.py` → 16 `results.json` (7 done / 7 clarify / 2 reject, incl. failures)
+- [x] 6.2 Test pack (`docs/TESTPACK.md`) fast lane 40 green; slow lane pending ffmpeg/weights
+- [ ] 6.3 Live demo URL (Compose + public URL; Docker available next)
 - [ ] 6.4 Submission Form + 8-min video
 
 ## P2 Likely-Drop
